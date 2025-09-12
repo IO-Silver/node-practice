@@ -1,0 +1,26 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IO-Silver/node-practice.git"
+  },
+  "author": "Rio S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IO-Silver/node-practice/issues"
+  },
+  "homepage": "https://github.com/IO-Silver/node-practice#readme",
+  "description": "",
+  "dependencies": {
+    "mongoose": "^8.18.1",
+    "underscore": "^1.13.7"
+  },
+  "devDependencies": {
+    "jshint": "^2.13.6"
+  }
+}

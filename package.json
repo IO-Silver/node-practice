@@ -17,6 +17,7 @@
   "homepage": "https://github.com/IO-Silver/node-practice#readme",
   "description": "",
   "dependencies": {
+    "express": "^5.1.0",
     "mongoose": "^8.18.1",
     "underscore": "^1.13.7"
   },

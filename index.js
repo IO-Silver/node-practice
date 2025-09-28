@@ -31,12 +31,20 @@ const courseSchema = new mongoose.Schema({
   isPublished: Boolean,
 });
 
-const pageNumber = 2;
+const pageNumber = 1;
 const pageSize = 10;
 const Course = mongoose.model("Course", courseSchema);
 
 async function getCourses(id) {
-  const course = await Course.update({ _id: id });
+  const course = await Course.findByIdAndUpdate(
+    id,
+    {
+      $set: {
+        author: "Rio",
+      },
+    },
+    { new: true }
+  );
   if (!course) return;
   course.set({
     isPublished: true,

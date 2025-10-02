@@ -10,10 +10,6 @@ beforeAll(() => {
   app.use("/api/courses", coursesRouter);
 });
 
-test("hello world!", () => {
-  expect(1 + 1).toBe(2);
-});
-
 describe("GET /api/courses", () => {
   it("should return an array of courses", async () => {
     const res = await request(app).get("/api/courses");

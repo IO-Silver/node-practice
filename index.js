@@ -39,7 +39,14 @@ const courseSchema = new mongoose.Schema({
       return this.isPublished;
     },
   },
-  tags: [String],
+  tags: {
+    type: Array,
+    validate: {
+      validator: function (v) {
+        return v && v.length > 0;
+      },
+    },
+  },
   date: { type: Date, default: Date.now },
   isPublished: Boolean,
 });

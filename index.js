@@ -8,6 +8,7 @@ const logger = require("./logger");
 const courses = require("./routes/courses");
 const home = require("./routes/home");
 const mongoose = require("mongoose");
+const { min } = require("underscore");
 const app = express();
 
 app.use(express.json());
@@ -23,9 +24,21 @@ mongoose
   .catch((err) => dbDebugger("Could not connect to MongoDB...", err));
 
 const courseSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, minlength: 5, maxlength: 255 },
   author: String,
-  price: Number,
+  category: {
+    type: String,
+    required: true,
+    enum: ["web", "mobile", "network"],
+  },
+  price: {
+    type: Number,
+    min: 10,
+    max: 200,
+    required: function () {
+      return this.isPublished;
+    },
+  },
   tags: [String],
   date: { type: Date, default: Date.now },
   isPublished: Boolean,
@@ -38,6 +51,7 @@ const Course = mongoose.model("Course", courseSchema);
 async function createCourse() {
   const course = new Course({
     name: "Angular Course",
+    category: "web",
     author: "Rio",
     tags: ["angular", "frontend"],
     isPublished: true,
